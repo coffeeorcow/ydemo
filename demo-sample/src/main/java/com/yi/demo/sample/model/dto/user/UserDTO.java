@@ -2,7 +2,6 @@ package com.yi.demo.sample.model.dto.user;
 
 import com.yi.demo.sample.validation.group.YGroup;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.hibernate.validator.constraints.Length;
 
 import javax.validation.constraints.Email;

@@ -1,15 +1,12 @@
 package com.yi.demo.sample.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.yi.demo.sample.common.enums.ResultCodeEnum;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
-import lombok.experimental.Accessors;
 
 import java.util.LinkedHashMap;
 
 @EqualsAndHashCode(callSuper = true)
-@Accessors(chain = true)
 @Data
 public class YResult extends LinkedHashMap<String, Object> {
 
@@ -18,14 +15,14 @@ public class YResult extends LinkedHashMap<String, Object> {
     private Object data;
 
     public YResult(int code, String msg) {
-        this.code = code;
-        this.msg = msg;
+        this.put("code", code);
+        this.put("msg", msg);
     }
 
-    public YResult(int code, String msg, Object Object) {
-        this.code = code;
-        this.msg = msg;
-        this.data = Object;
+    public YResult(int code, String msg, Object data) {
+        this.put("code", code);
+        this.put("msg", msg);
+        this.put("data", data);
     }
 
     public static YResult of(int code, String msg) {
