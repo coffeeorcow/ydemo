@@ -1,0 +1,9 @@
+server:
+  servlet:
+    context-path: /sample
+    encoding:
+      charset: UTF-8
+spring:
+  profiles:
+    active: dev
+
