@@ -1,5 +1,6 @@
 package com.yi.demo.sample.service;
 
+import com.yi.demo.sample.model.dto.user.UserDTO;
 import com.yi.demo.sample.model.entity.User;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,7 @@ public class UserServiceTest {
         user.setName("xxx");
         user.setEmail("fsadfsd@email.com");
         user.setRemarks("test");
-        userService.save(user);
+        userService.insert(new UserDTO().convertFor(user));
 
         log.info("insert user: \n{}", user);
     }

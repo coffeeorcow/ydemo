@@ -4,6 +4,7 @@ import com.google.common.base.Joiner;
 import com.yi.demo.sample.common.enums.ResultCodeEnum;
 import com.yi.demo.sample.common.exception.YException;
 import com.yi.demo.sample.model.YResult;
+import org.springframework.util.CollectionUtils;
 import org.springframework.validation.BindException;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -18,7 +19,10 @@ import java.util.List;
 public class YExceptionHandler {
 
     private String parseErrorMessage(List<ObjectError> allErrors) {
-        return Joiner.on(" | ").join(allErrors);
+        if (!CollectionUtils.isEmpty(allErrors)) {
+            return allErrors.get(0).getDefaultMessage();
+        }
+        return "请求参数有误";
     }
 
     @ResponseBody

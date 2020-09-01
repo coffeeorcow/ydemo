@@ -6,7 +6,7 @@ import lombok.Getter;
 @Getter
 public enum ResultCodeEnum {
 
-    SUCCESS(0, "请求成功"),
+    SUCCESS(0, "success"),
 
     DTO_NOT_FOUND(40001, "请求信息找不到"),
     HANDLER_NOT_FOUND(40404, "请求地址找不到"),
