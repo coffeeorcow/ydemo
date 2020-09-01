@@ -1,6 +1,5 @@
 package com.yi.demo.sample.config;
 
-import com.google.common.base.Joiner;
 import com.yi.demo.sample.common.enums.ResultCodeEnum;
 import com.yi.demo.sample.common.exception.YException;
 import com.yi.demo.sample.model.YResult;
@@ -27,31 +26,31 @@ public class YExceptionHandler {
 
     @ResponseBody
     @ExceptionHandler(BindException.class)
-    public YResult handleBindException(BindException e) {
+    public YResult<Object> handleBindException(BindException e) {
         return YResult.of(ResultCodeEnum.PARAM_VALIDATION_ERROR.getCode(), parseErrorMessage(e.getAllErrors()));
     }
 
     @ResponseBody
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public YResult handleMethodArgumentNotValid(MethodArgumentNotValidException e) {
+    public YResult<Object> handleMethodArgumentNotValid(MethodArgumentNotValidException e) {
         return YResult.of(ResultCodeEnum.PARAM_VALIDATION_ERROR.getCode(), parseErrorMessage(e.getBindingResult().getAllErrors()));
     }
 
     @ResponseBody
     @ExceptionHandler(NoHandlerFoundException.class)
-    public YResult handleNoHandlerException(NoHandlerFoundException e) {
+    public YResult<Object> handleNoHandlerException(NoHandlerFoundException e) {
         return YResult.of(ResultCodeEnum.HANDLER_NOT_FOUND.getCode(), ResultCodeEnum.HANDLER_NOT_FOUND.getMsg());
     }
 
     @ResponseBody
     @ExceptionHandler(YException.class)
-    public YResult handleYException(YException e) {
+    public YResult<Object> handleYException(YException e) {
         return YResult.of(e.getCode(), e.getMsg());
     }
 
     @ResponseBody
     @ExceptionHandler(Throwable.class)
-    public YResult handleThrowable(Throwable t) {
+    public YResult<Object> handleThrowable(Throwable t) {
         return YResult.fail(t.getMessage());
     }
 

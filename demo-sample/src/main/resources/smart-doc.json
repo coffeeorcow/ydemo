@@ -1,0 +1,24 @@
+{
+  "serverUrl": "http://127.0.0.1:8888/sample",
+  "allInOne": true,
+  "isStrict": false,
+  "outPath": "./src/main/resources/doc",
+  "allInOneDocFileName": "ydemo-sample-doc.html",
+  "coverOld": true,
+  "projectName": "ydemo-sample",
+  "dataDictionaries": [
+    {
+      "title": "状态码参照",
+      "enumClassName": "com.yi.demo.sample.common.enums.ResultCodeEnum",
+      "codeField": "code",
+      "descField": "msg"
+    }
+  ],
+  "customResponseFields": [
+    {
+      "name": "code",
+      "desc": "响应码",
+      "value": "0"
+    }
+  ]
+}

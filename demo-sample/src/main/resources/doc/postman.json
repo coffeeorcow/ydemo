@@ -1,0 +1,129 @@
+{
+  "info": {
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+    "_postman_id": "73cc9538-c981-4280-863d-066b655daa0d",
+    "name": "ydemo-sample"
+  },
+  "item": [
+    {
+      "name": "Interface name is not set.",
+      "item": [
+        {
+          "name": "Interface name is not set.",
+          "request": {
+            "method": "GET",
+            "body": {
+              "mode": "formdata"
+            },
+            "url": "http://127.0.0.1:8888/sample/test/hello",
+            "header": []
+          }
+        }
+      ]
+    },
+    {
+      "name": "用户信息相关操作",
+      "item": [
+        {
+          "name": "查询用户",
+          "request": {
+            "method": "GET",
+            "body": {
+              "mode": "formdata",
+              "formdata": [
+                {
+                  "key": "uid",
+                  "type": "text",
+                  "desc": "用户标识",
+                  "value": "80e0f91b-c1d7-4acb-91f7-2c7f8b8df23f"
+                },
+                {
+                  "key": "name",
+                  "type": "text",
+                  "desc": "用户名称 - 精确匹配",
+                  "value": "立轩.夏"
+                },
+                {
+                  "key": "nameLike",
+                  "type": "text",
+                  "desc": "用户名称模糊匹配",
+                  "value": "mdoxwb"
+                }
+              ]
+            },
+            "url": "http://127.0.0.1:8888/sample/users/?name\u003d立轩.夏\u0026nameLike\u003dmdoxwb\u0026uid\u003d80e0f91b-c1d7-4acb-91f7-2c7f8b8df23f",
+            "description": "查询用户",
+            "header": []
+          },
+          "description": "查询用户"
+        },
+        {
+          "name": "获取单个用户信息",
+          "request": {
+            "method": "GET",
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": "http://127.0.0.1:8888/sample/users/80e0f91b-c1d7-4acb-91f7-2c7f8b8df23f",
+            "description": "获取单个用户信息",
+            "header": []
+          },
+          "description": "获取单个用户信息"
+        },
+        {
+          "name": "插入用户信息",
+          "request": {
+            "method": "POST",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"uid\":80e0f91b-c1d7-4acb-91f7-2c7f8b8df23f,\n\t\"name\":\"立轩.夏\",\n\t\"email\":\"炎彬.尹@gmail.com\",\n\t\"remarks\":\"hzxpau\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://127.0.0.1:8888/sample/users/",
+            "description": "插入用户信息",
+            "header": []
+          },
+          "description": "插入用户信息"
+        },
+        {
+          "name": "修改用户信息",
+          "request": {
+            "method": "PUT",
+            "body": {
+              "mode": "raw",
+              "raw": "{\n\t\"uid\":80e0f91b-c1d7-4acb-91f7-2c7f8b8df23f,\n\t\"name\":\"立轩.夏\",\n\t\"email\":\"炎彬.尹@gmail.com\",\n\t\"remarks\":\"lc98o7\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": "http://127.0.0.1:8888/sample/users/",
+            "description": "修改用户信息",
+            "header": []
+          },
+          "description": "修改用户信息"
+        },
+        {
+          "name": "删除用户",
+          "request": {
+            "method": "DELETE",
+            "body": {
+              "mode": "formdata",
+              "formdata": []
+            },
+            "url": "http://127.0.0.1:8888/sample/users/80e0f91b-c1d7-4acb-91f7-2c7f8b8df23f",
+            "description": "删除用户",
+            "header": []
+          },
+          "description": "删除用户"
+        }
+      ]
+    }
+  ]
+}

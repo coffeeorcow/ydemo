@@ -14,7 +14,6 @@
         <version>1.0.0</version>
     </parent>
 
-
     <properties>
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -24,6 +23,9 @@
         <fastjson.version>1.2.73</fastjson.version>
         <guava.version>29.0-jre</guava.version>
         <querydsl.version>4.3.1</querydsl.version>
+
+        <querydsl-apt.version>1.1.3</querydsl-apt.version>
+        <smart-doc.version>1.1.7</smart-doc.version>
     </properties>
 
     <dependencies>
@@ -157,7 +159,7 @@
             <plugin>
                 <groupId>com.mysema.maven</groupId>
                 <artifactId>apt-maven-plugin</artifactId>
-                <version>1.1.3</version>
+                <version>${querydsl-apt.version}</version>
                 <executions>
                     <execution>
                         <goals>
@@ -176,6 +178,35 @@
                         <version>${querydsl.version}</version>
                     </dependency>
                 </dependencies>
+            </plugin>
+            <plugin>
+                <groupId>com.github.shalousun</groupId>
+                <artifactId>smart-doc-maven-plugin</artifactId>
+                <version>${smart-doc.version}</version>
+                <configuration>
+                    <!--Specify the configuration file used to generate the document-->
+                    <configFile>./src/main/resources/smart-doc.json</configFile>
+                    <!--smart-doc implements automatic analysis of the dependency tree to load the source code of third-party dependencies. If some framework dependency libraries are not loaded, an error is reported, then use excludes to exclude-->
+                    <excludes>
+                        <!--The format is: groupId: artifactId; refer to the following-->
+                        <exclude>com.google.guava:guava</exclude>
+                    </excludes>
+                    <!--Since version 1.0.8, the plugin provides includes support-->
+                    <!--smart-doc can automatically analyze the dependency tree to load all dependent source code. In principle, it will affect the efficiency of document construction, so you can use includes to let the plugin load the components you configure.-->
+                    <includes>
+                        <!-- The format is: groupId: artifactId; refer to the following -->
+                        <include>com.alibaba:fastjson</include>
+                    </includes>
+                </configuration>
+                <executions>
+<!--                    <execution>-->
+<!--                        &lt;!&ndash;Comment out phase if you don't need to start smart-doc when compiling&ndash;&gt;-->
+<!--                        <phase>compile</phase>-->
+<!--                        <goals>-->
+<!--                            <goal>html</goal>-->
+<!--                        </goals>-->
+<!--                    </execution>-->
+                </executions>
             </plugin>
         </plugins>
     </build>

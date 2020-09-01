@@ -1,5 +1,7 @@
 package com.yi.demo.sample.model.dto.user;
 
+import com.alibaba.fastjson.annotation.JSONField;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Converter;
 import com.yi.demo.sample.model.entity.User;
 import lombok.Data;
@@ -8,13 +10,30 @@ import org.springframework.beans.BeanUtils;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.time.LocalDateTime;
 
+/**
+ * 用户信息
+ */
 @Data
 public class UserInfoDTO {
 
-    private String uid;
+    /**
+     * 用户标识
+     */
+    private Long uid;
+    /**
+     * 用户名称
+     */
     private String name;
+    /**
+     * 备注
+     */
     private String remarks;
+    /**
+     * 创建时间
+     */
     private LocalDateTime createTime;
+
+
     public User convertToUser() {
         UserInfoDTOConverter converter = new UserInfoDTOConverter();
         return converter.doForward(this);
