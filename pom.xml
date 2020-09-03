@@ -73,6 +73,7 @@
 
     <modules>
         <module>demo-sample</module>
+        <module>base</module>
     </modules>
 
 </project>
