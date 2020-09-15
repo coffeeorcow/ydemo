@@ -9,6 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
+    <properties>
+        <guava.version>29.0-jre</guava.version>
+        <netty.version>4.1.49.Final</netty.version>
+    </properties>
+
     <artifactId>base</artifactId>
     <build>
         <plugins>
@@ -25,9 +30,14 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
+        <dependency>
             <groupId>io.netty</groupId>
             <artifactId>netty-all</artifactId>
-            <version>4.1.49.Final</version>
+            <version>${netty.version}</version>
         </dependency>
     </dependencies>
 
