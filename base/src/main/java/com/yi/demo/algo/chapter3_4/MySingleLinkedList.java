@@ -37,12 +37,37 @@ public class MySingleLinkedList<E> implements Iterable<E> {
         Node<E> newNode = new Node<>(e);
         if (tail == null) {
             this.head.next = newNode;
-            tail = newNode;
         } else {
             this.tail.next = newNode;
         }
+        tail = newNode;
         this.size++;
         return this;
     }
 
+    public E get(int idx) {
+        return getNode(idx).value;
+    }
+
+    public Node<E> getNode(int idx) {
+        if (idx >= this.size) throw new IndexOutOfBoundsException();
+
+        Node<E> n = head.next;
+        for (int i = 0; i < idx; i++) {
+            n = n.next;
+        }
+
+        return n;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        Node<E> t = head.next;
+        while (t != null) {
+            sb.append(t.next != null ? t.value + " → " : t.value);
+            t = t.next;
+        }
+        return sb.toString();
+    }
 }

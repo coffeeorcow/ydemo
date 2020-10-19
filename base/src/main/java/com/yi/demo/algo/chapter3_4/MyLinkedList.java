@@ -40,11 +40,22 @@ public class MyLinkedList<E> implements Iterable<E> {
         modCount++;
     }
 
+    public boolean contains(E e) {
+        Node<E> cur = beginMarker.next;
+        while (cur != null && cur != endMarker) {
+            if (cur.value.equals(e)) {
+                return true;
+            }
+            cur = cur.next;
+        }
+        return false;
+    }
+
     public E get(int index) {
         return getNode(index).value;
     }
 
-    private Node<E> getNode(int index) {
+    public Node<E> getNode(int index) {
         if (index < 0 || index > theSize) throw new IndexOutOfBoundsException();
 
         Node<E> e;
