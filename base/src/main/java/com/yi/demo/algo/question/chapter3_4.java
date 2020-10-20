@@ -7,32 +7,40 @@ import java.util.List;
 
 public class chapter3_4 {
 
-    private static List<Integer> intersections(List<Integer> list1, List<Integer> list2) {
-        Iterator<Integer> iter1 = list1.iterator();
-        Iterator<Integer> iter2 = list2.iterator();
-        List<Integer> list = Lists.newArrayList();
+    private static <E extends Comparable<E>> List<E> intersections(List<E> list1, List<E> list2) {
+        List<E> list = Lists.newArrayList();
+        Iterator<E> iter1 = list1.iterator();
+        Iterator<E> iter2 = list2.iterator();
+        if (!iter1.hasNext() || !iter2.hasNext()) {
+            return list;
+        }
 
-        // todo: 两个 list 求交集
-//        Integer value1, value2 = null;
-//        while (iter1.hasNext() && iter2.hasNext()) {
-//            if (value == null) value = iter1.next();
-//
-//            if (value.equals(iter2.next())) {
-//                list.add(value);
-//                value = iter1.next();
-//            }
-//
-//        }
+        E item1 = iter1.next();
+        E item2 = iter2.next();
+        while (item1 != null && item2 != null) {
+            int cmp = item1.compareTo(item2);
+            if (cmp < 0) {
+                if (!iter1.hasNext()) break;
+                item1 = iter1.next();
+            } else if (cmp == 0) {
+                list.add(item1);
 
-        return null;
+                if (!iter1.hasNext() || !iter2.hasNext()) break;
+                item1 = iter1.next();
+                item2 = iter2.next();
+            } else {
+                if (!iter2.hasNext()) break;
+                item2 = iter2.next();
+            }
+        }
+        return list;
     }
 
 
     public static void main(String[] args) {
-        Lists.newArrayList(1,2,3,4,7,8);
-        Lists.newArrayList(1,5,7,9);
-
-
+        List<Integer> list1 = Lists.newArrayList(1, 2, 3, 4, 7, 8);
+        List<Integer> list2 = Lists.newArrayList(1, 5, 7, 9);
+        System.out.println(intersections(list1, list2));
 
     }
 
